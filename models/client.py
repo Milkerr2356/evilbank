@@ -141,6 +141,16 @@ class Client:
         operation = f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} | Отправлено {amount} {currency.upper()} пользователю {send_user_id} (комиссия {commission[currency]})"
         self.history_of_operations.append(operation)
         print("Перевод выполнен успешно.")
+    def get_user_id(self):
+        print(f"Ваш ID пользователя: {self.user_id}")
+
+    def get_numer_of_schet(self):
+        print(f"Ваш номер счета: {self.number_of_schet}")
+
+    def get_history_of_operations(self):
+        print("Ваш список операций:")
+        for op in self.history_of_operations:
+            print(f"- {op}")
 
 # === Регистрация и вход ===
 def register_client(conn):
@@ -182,5 +192,6 @@ def login_client(conn):
     if not user_data:
         print("Неверный логин или пароль.")
         return None
-    print("Успешный вход.")
+    print("Успешный вход. \n")
     return user_data
+

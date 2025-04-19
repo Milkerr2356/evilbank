@@ -1,8 +1,10 @@
 # main.py
 
-from client import Client
+from client
 from client_db import ClientDatabase
 from meneger import Meneger
+
+from models.client import login_client, register_client
 
 if __name__ == "__main__":
     db = ClientDatabase()
@@ -30,4 +32,10 @@ while True:
     print("Выберите действие: \n 1. ВХОД \n 2.РЕГИСТРАЦИЯ")
     result_log_reg = int(input("\t"))
     if result_log_reg == 1:
-        cli
+        if login_client() != None:
+            print("Выберите действие: ")
+            print("1. Проверить баланс \n 2.Посмотреть user_id \n 3.Посмотреть номер счета \n 4/")
+
+
+    if result_log_reg == 2:
+        register_client()
