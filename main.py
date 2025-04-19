@@ -1,7 +1,8 @@
 # main.py
 
 from client import Client
-from client_database import ClientDatabase
+from client_db import ClientDatabase
+from meneger import Meneger
 
 if __name__ == "__main__":
     db = ClientDatabase()
@@ -22,3 +23,11 @@ if __name__ == "__main__":
     )
 
     db.save_client(client1)
+
+
+while True:
+    print("ДОБРО ПОЖАЛОВАТЬ ! \n Вас приветстувает Universal Banking eXpress \n")
+    print("Выберите действие: \n 1. ВХОД \n 2.РЕГИСТРАЦИЯ")
+    result_log_reg = int(input("\t"))
+    if result_log_reg == 1:
+        cli

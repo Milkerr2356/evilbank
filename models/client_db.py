@@ -1,5 +1,3 @@
-# client_database.py
-
 import sqlite3
 import json
 
@@ -28,7 +26,9 @@ class ClientDatabase:
                     have_usd REAL,
                     history_of_operations TEXT,
                     applications TEXT,
-                    messages TEXT
+                    messages TEXT,
+                    password TEXT,
+                    is_manager BOOLEAN DEFAULT 0
                 )
             ''')
             conn.commit()
@@ -40,12 +40,13 @@ class ClientDatabase:
                 INSERT OR REPLACE INTO clients (
                     user_id, name, surname, telephone_number, date_birthday, date_s_client,
                     number_of_schet, have_byn, have_rub, have_usd,
-                    history_of_operations, applications, messages
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    history_of_operations, applications, messages, password, is_manager
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ''', (
                 client.user_id,
                 client.name,
                 client.surname,
+                client.telephone_number,
                 client.date_birthday,
                 client.date_s_client,
                 client.number_of_schet,
@@ -54,6 +55,8 @@ class ClientDatabase:
                 client.have_usd,
                 json.dumps(client.history_of_operations),
                 json.dumps(client.applicatios),
-                json.dumps(client.messages)
+                json.dumps(client.messages),
+                client.password,
+                client.is_manager
             ))
             conn.commit()

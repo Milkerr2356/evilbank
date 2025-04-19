@@ -6,7 +6,7 @@ from glances.globals import json_dumps
 import client
 import sqlite3
 
-# У менеджера есть имя,фамилия, дата рождения, дата становления работником, айди пользователя, сумма зп, сообщения, отправленные сообщения
+
 class Meneger:
 
     def __init__(self, name, surname, date_birthday, date_s_meneger, user_id,
