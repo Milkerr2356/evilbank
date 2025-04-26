@@ -24,6 +24,7 @@ class ClientDatabase:
                     have_byn REAL,
                     have_rub REAL,
                     have_usd REAL,
+                    have_eur REAL,
                     history_of_operations TEXT,
                     applications TEXT,
                     messages TEXT,
@@ -39,9 +40,9 @@ class ClientDatabase:
             cursor.execute('''
                 INSERT OR REPLACE INTO clients (
                     user_id, name, surname, telephone_number, date_birthday, date_s_client,
-                    number_of_schet, have_byn, have_rub, have_usd,
+                    number_of_schet, have_byn, have_rub, have_usd, have_eur,
                     history_of_operations, applications, messages, password, is_manager
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ''', (
                 client.user_id,
                 client.name,
@@ -53,9 +54,10 @@ class ClientDatabase:
                 client.have_byn,
                 client.have_rub,
                 client.have_usd,
-                json.dumps(client.history_of_operations),
-                json.dumps(client.applicatios),
-                json.dumps(client.messages),
+                client.have_eur,
+                json.dumps(client.history_of_operations or []),
+                json.dumps(client.applications or []),
+                json.dumps(client.messages or []),
                 client.password,
                 client.is_manager
             ))
